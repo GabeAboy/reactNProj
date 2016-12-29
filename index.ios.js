@@ -14,126 +14,75 @@ import {
   TextInput
 } from 'react-native';
 
+import StatusBarBackground from './src/components/StatusBarBackground';
+import Title from './src/components/title';
+import LoginHeader from './src/components/LoginHeader';
+import LoginCo from './src/components/logInWith';
+import LoginContent from './src/components/logInContent';
+const fbIcon = require('./src/pics/logo/facebook.png')
+const lnIcon = require('./src/pics/logo/linkedin.png')
+const gitIcon = require('./src/pics/logo/github-logo.png')
 
-import StatusBarBackground from './src/components/StatusBarBackground'
-
-class UselessTextInput extends Component {
-  constructor(props) {
-    super(props);
-    this.state = { text: 'Useless Placeholder' };
-  };
-
-class BackgroundImage extends Component{
-  render(){
-    return(
-      <Image source={require('./src/pics/mnt.jpg')} style = {styles.imageBackGround}>
-        {this.props.children}
-      </Image>
-    )
-  }
+const welcome = 'Connect using '
+const logObj = {
+    fb:{
+      img:fbIcon,
+      text:welcome,
+      name:'Facebook'
+    },
+    ln:{
+      img:lnIcon,
+      text:welcome,
+      name:'Linkedin'
+    },
+    git:{
+      img:gitIcon,
+      text:welcome,
+      name:'Github'
+    }
 }
-export default class theMarket extends Component {
+class theMarket extends Component {
   render() {
     return (
       <View style = {styles.container}>
-      <StatusBarBackground/>
-        <BackgroundImage>
-          <View style = {styles.topCont}>
-            <View style = {[styles.connectBox,styles.linkedin]}>
-                <View style = {styles.lButton}>
-                  <Image style={styles.imgSize} source={require('./src/pics/logo/linkedin.png')}/>
-                </View>
-                <View style = {styles.butt}>
-                  <Text style = {styles.textAl}>Connect with linkedin</Text>
-                </View>
-            </View>
+        <StatusBarBackground/>
 
-            <View style = {[styles.connectBox,styles.github]}>
-                <View style = {styles.lButton}>
-                  <Image style={styles.imgSize} source={require('./src/pics/logo/github-logo.png')}/>
-                </View>
-                <View style = {styles.butt}>
-                  <Text style = {styles.textAl}>Connect with github</Text>
-              </View>
-            </View>
-
-            <View style = {[styles.connectBox,styles.facebook]}>
-                <View style = {styles.lButton}>
-                  <Image style={styles.imgSize} source={require('./src/pics/logo/facebook.png')}/>
-                </View>
-                <View style = {styles.butt}>
-                  <Text style = {styles.textAl}>Connect with facebook</Text>
-                </View>
-            </View>
-
-          </View>
+        <View style={[styles.header,styles.background]}>
+          <LoginHeader/>
+        </View>
+        <View style = {[styles.loginBox,styles.background]}>
+          <LoginCo logType ={logObj.fb}  />
+          <LoginCo logType ={logObj.ln}  />
+          <LoginCo logType ={logObj.git}  />
+        </View>
 
 
-
-          <View style = {styles.botCont}>
-
-          </View>
-
-
-        </BackgroundImage>
+        <View style = {[styles.submitBox,styles.background]}>
+          <LoginContent/>
+        </View>
       </View>
-    );
+    )
   }
 }
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1
+    flex: 1,
+
   },
-  imageBackGround:{
+  header:{
     flex:1,
-    alignSelf:'stretch',
-    width:null,height:null
   },
-  textAl:{
-    color:'#F0F8FF',
-    fontSize:20,
-
+  background:{
+    backgroundColor:'mistyrose'
   },
-  imgSize:{
-    width:45,height:45
-
-  },
-  connectBox:{
-    width:300,
-    flexDirection:'row'
-
-  },
-  butt:{
-    flexDirection:'row',
-    alignItems:'center'
-
-  },
-
-  topCont:{
-    flex:5,
-    alignItems:'center',
-    justifyContent:'center',
-    backgroundColor:'#CC0000'
-  },
-
-
-  botCont:{
-    flex:5,
-    backgroundColor:'#0000CC'
-  },
-  linkedin:{
-    backgroundColor:'#0077B5',
-    flexDirection:'row',
-
-  },
-  facebook:{
-    backgroundColor:'#71a5ed'
-  },
-  github:{
-    backgroundColor:'#3a4a6b'
+  loginBox:{
+            flex:3,
+            alignItems:'center',
+            justifyContent:'center'},
+  submitBox:{
+    flex:5
   }
-
-});
+})
 
 AppRegistry.registerComponent('theMarket', () => theMarket);
