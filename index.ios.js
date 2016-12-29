@@ -6,82 +6,43 @@
 
 import React, { Component } from 'react';
 import {
+  Navigator,
   AppRegistry,
-  StyleSheet,
-  Text,
-  Image,
-  View,
-  TextInput
+  StyleSheet
 } from 'react-native';
 
-import StatusBarBackground from './src/components/StatusBarBackground';
-import Title from './src/components/title';
-import LoginHeader from './src/components/LoginHeader';
-import LoginCo from './src/components/logInWith';
-import LoginContent from './src/components/logInContent';
-const fbIcon = require('./src/pics/logo/facebook.png')
-const lnIcon = require('./src/pics/logo/linkedin.png')
-const gitIcon = require('./src/pics/logo/github-logo.png')
 
-const welcome = 'Connect using '
-const logObj = {
-    fb:{
-      img:fbIcon,
-      text:welcome,
-      name:'Facebook'
-    },
-    ln:{
-      img:lnIcon,
-      text:welcome,
-      name:'Linkedin'
-    },
-    git:{
-      img:gitIcon,
-      text:welcome,
-      name:'Github'
-    }
-}
+import BotNav from './src/components/bottomNav'
+const fbIcon = require('./src/pics/logo/facebook.png')
+
 class theMarket extends Component {
+  _renderScene(route,navigator){
+      var globalNavigatorProps = {navigator}
+      switch(route.indent){
+        case 'logIn':
+          return(
+            <BotNav
+              {...globalNavigatorProps}/>
+          )
+      }
+    }
+
+
   render() {
     return (
-      <View style = {styles.container}>
-        <StatusBarBackground/>
-
-        <View style={[styles.header,styles.background]}>
-          <LoginHeader/>
-        </View>
-        <View style = {[styles.loginBox,styles.background]}>
-          <LoginCo logType ={logObj.fb}  />
-          <LoginCo logType ={logObj.ln}  />
-          <LoginCo logType ={logObj.git}  />
-        </View>
-
-
-        <View style = {[styles.submitBox,styles.background]}>
-          <LoginContent/>
-        </View>
-      </View>
+      <Navigator
+        initialRoute={{indent:"logIn"}}
+        ref='appNavigator'
+        style = {styles.navStyle}
+        renderScene = {this._renderScene} />
     )
   }
+
 }
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
+  navStyle:{
 
-  },
-  header:{
-    flex:1,
-  },
-  background:{
-    backgroundColor:'mistyrose'
-  },
-  loginBox:{
-            flex:3,
-            alignItems:'center',
-            justifyContent:'center'},
-  submitBox:{
-    flex:5
   }
 })
 
