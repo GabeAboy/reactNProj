@@ -7,11 +7,19 @@ import {
   Image,
   View,
   TouchableOpacity,
+  Navigator,
   TextInput} from 'react-native'
 import StatusBarBackground from './StatusBarBackground';
-class BotNav extends React.Component{
 
+class BotNav extends React.Component{
+  _navigateToLogin(){
+    this.props.navigator.push({
+      indent:'logInWith'
+    })
+  }
   render() {
+    console.log('This is the nav',this.props.navigator);
+
     return (
       <View style = {styles.container}>
         <StatusBarBackground/>
@@ -21,7 +29,7 @@ class BotNav extends React.Component{
         </View>
         <View style = {styles.lowNav}>
 
-            <TouchableOpacity  onPress = {() => this.onPressfu()}underlayColor = "red"
+            <TouchableOpacity  onPress = {() => this._navigateToLogin()}underlayColor = "red"
                 style = {[styles.lowNavLeft,styles.lowNavLR]}>
             <Text style = {styles.lowNavText}>LOG IN</Text>
             </TouchableOpacity>

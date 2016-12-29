@@ -13,6 +13,7 @@ import {
 
 
 import BotNav from './src/components/bottomNav'
+import LogInWith from './src/components/logInWith'
 const fbIcon = require('./src/pics/logo/facebook.png')
 
 class theMarket extends Component {
@@ -22,6 +23,11 @@ class theMarket extends Component {
         case 'logIn':
           return(
             <BotNav
+              {...globalNavigatorProps}/>
+          )
+        case 'logInWith':
+          return(
+            <LogInWith
               {...globalNavigatorProps}/>
           )
       }
