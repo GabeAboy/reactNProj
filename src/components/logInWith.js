@@ -4,6 +4,7 @@ import {View,StyleSheet,Image,Text,TextInput,TouchableOpacity} from 'react-nativ
 import Icon from 'react-native-vector-icons/FontAwesome'
 import IconIm from 'react-native-vector-icons/Ionicons'
 import StatusBarBackground from './StatusBarBackground'
+import TextBoxLayout from './loginComponents/textInput'
 class LogInWith extends React.Component{
   _navigateToProfile(){
     this.props.navigator.push({
@@ -13,7 +14,7 @@ class LogInWith extends React.Component{
   render(){
     return(
 
-      <View style={{flex: 1}}>
+      <View style={styles.container}>
       <StatusBarBackground/>
           <View style={styles.top} >
               <Text style={[styles.login,styles.lineHeight]}>Log in</Text>
@@ -21,19 +22,11 @@ class LogInWith extends React.Component{
               <Text style={styles.login}>or</Text>
           </View>
 
-
-          <View style={styles.bot}/>
-          <View style = {styles.input}>
-              <View style ={styles.imgCon}><IconIm name="ios-person" color="#4F8EF7" size={40} style={styles.img}/></View>
-            <TextInput
-            style={styles.textInput}
-            placeholder='Enter email address'/>
-          </View>
-          <View style={styles.input}>
-            <View style ={styles.imgCon}><IconIm name="ios-lock" color="#4F8EF7" size={40} style={styles.img}/></View>
-          <TextInput
-          style={styles.textInput}
-          placeholder='Password'/>
+          <View style={[styles.bot]}>
+            <View style={styles.sizer}>
+              <TextBoxLayout img = 'ios-person' text ='Username or email'/>
+              <TextBoxLayout img = 'ios-lock' text ='Password'/>
+            </View>
           </View>
 
         </View>
@@ -45,7 +38,7 @@ const styles = StyleSheet.create({
   container:{
     flex:1,
     alignItems:'center',
-    backgroundColor:'red'
+    backgroundColor:'black'
   },
   top:{
     flex:2,
@@ -55,9 +48,10 @@ const styles = StyleSheet.create({
 
     backgroundColor: 'black'
   },
+  sizer:{width:300,height:50},
   bot:{
     flex:7,
-    justifyContent:'center',
+    flexDirection:'column',
     alignItems:'center'
 
   },
