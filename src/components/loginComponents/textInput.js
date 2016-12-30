@@ -2,10 +2,10 @@
 import React,{Component} from 'react'
 import {View,StyleSheet} from 'react-native'
 
-class StatusBarBackground extends React.Component{
+class textInput extends React.Component{
   render(){
     return(
-      <View style = {styles.statusBarBackground}>
+      <View style = {styles.textInput}>
 
       </View>
     )
@@ -13,11 +13,11 @@ class StatusBarBackground extends React.Component{
 }
 const styles = StyleSheet.create({
 
-  statusBarBackground:{
+  textInput:{
     height:20,
     alignSelf:'stretch',
     backgroundColor:'white'
   }
 
 })
-module.exports = StatusBarBackground
+module.exports = textInput

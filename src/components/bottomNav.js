@@ -10,6 +10,7 @@ import {
   Navigator,
   TextInput} from 'react-native'
 import StatusBarBackground from './StatusBarBackground';
+const backDrop = require('../pics/background.jpg')
 
 class BotNav extends React.Component{
   _navigateToLogin(){
@@ -17,11 +18,15 @@ class BotNav extends React.Component{
       indent:'logInWith'
     })
   }
+  _navigateToSignUp(){
+    this.props.navigator.push({
+      indent:'SignUp'
+    })
+  }
   render() {
-    console.log('This is the nav',this.props.navigator);
 
     return (
-      <View style = {styles.container}>
+      <Image source ={backDrop} style = {styles.container}>
         <StatusBarBackground/>
 
         <View style = {styles.upper}>
@@ -34,13 +39,13 @@ class BotNav extends React.Component{
             <Text style = {styles.lowNavText}>LOG IN</Text>
             </TouchableOpacity>
 
-          <TouchableOpacity  onPress = {() => this.onPressfu()}underlayColor = "red"
+          <TouchableOpacity  onPress = {() => this._navigateToSignUp()}underlayColor = "red"
               style = {[styles.lowNavRight,styles.lowNavLR]}>
             <Text style = {styles.lowNavText}>SIGN UP</Text>
           </TouchableOpacity>
         </View>
 
-      </View>
+      </Image>
     )
   }
 
@@ -48,28 +53,32 @@ class BotNav extends React.Component{
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1
+    flex: 1,
+    resizeMode:'stretch',
+    height:null,width:null
   },
   titleText:{
     color: 'black',
     fontFamily: 'Menlo-BoldItalic',
-    fontSize: 30, fontWeight: 'bold',
-     lineHeight: 48
+    fontSize: 30, fontWeight: '900',
+    lineHeight: 70, color:'white',
+    letterSpacing:2
    },
   upper:{
     flex:9,
-    backgroundColor:'mistyrose'
+
+    alignItems:'center'
   },
   lowNav:{
     flexDirection:'row',
     flex:1
   },
   lowNavLeft:{
-    backgroundColor:'gray',
+    backgroundColor:'#333634',
     flex:5
   },
   lowNavRight:{
-    backgroundColor:'green',
+    backgroundColor:'#32bd13',
     flex:5
   },
   lowNavLR:{
