@@ -7,10 +7,15 @@ class TextBoxLayout extends React.Component{
     return(
       <View style = {styles.textInput}>
 
-      <View style ={[styles.imgCon,styles.space]}><IconIm name={this.props.img} color="#4F8EF7" size={40} style={styles.img}/></View>
-    <TextInput
-    style={[styles.textbla,styles.space]}
-    placeholder={this.props.text}/>
+
+
+          <View style={[styles.ImgCon,styles.space]}>
+            <IconIm name={this.props.img} color="#4F8EF7" size={30} style={styles.img}/>
+          </View>
+
+          <TextInput style={[styles.textbla,styles.space]} paceholderTextColor='white' placeholder={this.props.text}/>
+
+
 
       </View>
     )
@@ -21,13 +26,9 @@ const styles = StyleSheet.create({
   textInput:{
     flex:1,
     flexDirection:'row',
-    alignSelf:'stretch',
-    backgroundColor:'gray',
+    backgroundColor:'#353535',
     borderRadius:5,
-    overflow:'hidden',
-    justifyContent:'space-between',
-    alignItems:'center'
-
+    overflow:'hidden'
   },
   space:{
     justifyContent:'center',
@@ -35,9 +36,12 @@ const styles = StyleSheet.create({
   },
   ImgCon:{
     flex:2
+
   },
   textbla:{
-    flex:8
+    flex:9,
+    color:'white'
+
   }
 })
 module.exports = TextBoxLayout

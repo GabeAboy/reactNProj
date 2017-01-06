@@ -72,13 +72,14 @@ const styles = StyleSheet.create({
   lowNav:{
     flexDirection:'row',
     flex:1
+    ,backgroundColor:'black'
   },
   lowNavLeft:{
     backgroundColor:'#333634',
     flex:5
   },
   lowNavRight:{
-    backgroundColor:'#32bd13',
+    backgroundColor:'rgb(30,214,95)',
     flex:5
   },
   lowNavLR:{

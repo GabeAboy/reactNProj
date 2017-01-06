@@ -5,6 +5,7 @@ import Icon from 'react-native-vector-icons/FontAwesome'
 import IconIm from 'react-native-vector-icons/Ionicons'
 import StatusBarBackground from './StatusBarBackground'
 import TextBoxLayout from './loginComponents/textInput'
+import Button from './loginComponents/button'
 class LogInWith extends React.Component{
   _navigateToProfile(){
     this.props.navigator.push({
@@ -25,9 +26,12 @@ class LogInWith extends React.Component{
           <View style={[styles.bot]}>
             <View style={styles.sizer}>
               <TextBoxLayout img = 'ios-person' text ='Username or email'/>
+            </View>
+            <View style={styles.sizer}>
               <TextBoxLayout img = 'ios-lock' text ='Password'/>
             </View>
           </View>
+          <Button text="LOG IN"/>
 
         </View>
     )

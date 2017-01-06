@@ -1,0 +1,8 @@
+<View style={styles.textbla}>
+    <TextInput
+    style={[styles.space]}
+    placeholder={this.props.text}/>
+</View>
+
+
+<IconIm name={this.props.img} color="#4F8EF7" size={30} style={styles.img}/>

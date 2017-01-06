@@ -16,6 +16,7 @@ import BotNav from './src/components/bottomNav'
 import LogInWith from './src/components/logInWith'
 import SignUp from './src/components/signUp'
 import Profile from './src/components/profile'
+import Nav from './src/components/navigator'
 const fbIcon = require('./src/pics/logo/facebook.png')
 
 class theMarket extends Component {
@@ -42,6 +43,11 @@ class theMarket extends Component {
               <Profile
                 {...globalNavigatorProps}/>
             )
+            case 'Nav':
+              return(
+                <Nav
+                  {...globalNavigatorProps}/>
+              )
       }
     }
 
