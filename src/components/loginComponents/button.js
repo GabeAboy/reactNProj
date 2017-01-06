@@ -13,8 +13,8 @@ class Button extends React.Component{
 }
 const styles = StyleSheet.create({
   box:{
-    width:150,height:60,
-    backgroundColor:'#84bd00',
+    width:120,height:45,
+    backgroundColor:'rgb(30,214,95)',
     flexDirection:'row',
     borderRadius:25,
     overflow:'hidden',
@@ -23,7 +23,8 @@ const styles = StyleSheet.create({
 
   },
   textBox:{
-  color:'white'
+  color:'white',
+  fontSize:20,fontWeight:'500'
 
   }
 

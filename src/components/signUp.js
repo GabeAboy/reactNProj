@@ -23,7 +23,7 @@ _navigateToProfile(){
 
           <View style={[styles.bot]}>
             <View style={styles.sizer}>
-              <TextBoxLayout img = 'ios-mail-outline' text ='Enter Email'/>
+              <TextBoxLayout img = 'ios-mail' text ='Enter Email'/>
             </View>
             <View style={styles.sizer}>
               <TextBoxLayout img = 'ios-lock' text ='Enter Password'/>
@@ -60,7 +60,7 @@ const styles = StyleSheet.create({
     flex:7,
     flexDirection:'column',
     alignItems:'center'
-  
+
 
   },
   lineHeight:{

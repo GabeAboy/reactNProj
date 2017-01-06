@@ -10,7 +10,7 @@ class TextBoxLayout extends React.Component{
 
 
           <View style={[styles.ImgCon,styles.space]}>
-            <IconIm name={this.props.img} color="#4F8EF7" size={30} style={styles.img}/>
+            <IconIm name={this.props.img} color="#dae0ea" size={25} style={styles.img}/>
           </View>
 
           <TextInput style={[styles.textbla,styles.space]} paceholderTextColor='white' placeholder={this.props.text}/>

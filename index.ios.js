@@ -18,8 +18,10 @@ import SignUp from './src/components/signUp'
 import Profile from './src/components/profile'
 import Nav from './src/components/navigator'
 const fbIcon = require('./src/pics/logo/facebook.png')
+var SQLite = require('react-native-sqlite-storage')
 
 class theMarket extends Component {
+  
   _renderScene(route,navigator){
       var globalNavigatorProps = {navigator}
       switch(route.indent){

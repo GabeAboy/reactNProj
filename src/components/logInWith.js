@@ -42,7 +42,7 @@ const styles = StyleSheet.create({
   container:{
     flex:1,
     alignItems:'center',
-    backgroundColor:'black'
+    backgroundColor:'#181c26'
   },
   top:{
     flex:2,
