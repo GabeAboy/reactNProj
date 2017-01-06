@@ -1,14 +1,47 @@
 'use strict'
 import React,{Component} from 'react'
-import {View,StyleSheet,Image,Text,TouchableOpacity} from 'react-native'
+import {View,StyleSheet,Image,Text,TouchableOpacity,TextInput} from 'react-native'
 import StatusBarBackground from './StatusBarBackground'
 import TextBoxLayout from './loginComponents/textInput'
 import Button from './loginComponents/button'
+import IconIm from 'react-native-vector-icons/Ionicons'
+
+
 class SignUp extends React.Component{
+constructor(props) {
+  super(props);
+  this.state = {name: '',
+                password:'',
+                username:''};
+}
 _navigateToProfile(){
   this.props.navigator.push({
     indent:'Profile'
   })
+}
+_updateServer(){
+  console.log("HEY ",this.state.name)
+  console.log( JSON.stringify({
+    email: this.state.name,
+    username: this.state.username,
+    password:this.state.password
+  }));
+  fetch('http://localhost:3000/endpoint/', {
+  method: 'POST',
+  headers: {
+    'Accept': 'application/json',
+    'Content-Type': 'application/json',
+  },
+  body: JSON.stringify({
+    email: this.state.name,
+    username: this.state.username,
+    password:this.state.password
+  })
+}).then((response)=>response.json())
+  .then((responseJson)=>{
+    console.log(responseJson);
+    return responseJson
+  }) .catch((error) => { console.error(error); });
 }
   render(){
     return(
@@ -22,17 +55,50 @@ _navigateToProfile(){
           </View>
 
           <View style={[styles.bot]}>
+
             <View style={styles.sizer}>
-              <TextBoxLayout img = 'ios-mail' text ='Enter Email'/>
+              <View style = {styles.textInput}>
+                  <View style={[styles.ImgCon,styles.space]}>
+                    <IconIm name='ios-mail' color="#dae0ea" size={25} style={styles.img}/>
+                  </View>
+                  <TextInput style={[styles.textbla,styles.space]} paceholderTextColor='white' placeholder='Enter Email'
+                  onChangeText={(name) => {
+                    this.setState({name})
+                  }}/>
+              </View>
             </View>
+
             <View style={styles.sizer}>
-              <TextBoxLayout img = 'ios-lock' text ='Enter Password'/>
+            <View style = {styles.textInput}>
+                <View style={[styles.ImgCon,styles.space]}>
+                  <IconIm name='ios-person' color="#dae0ea" size={25} style={styles.img}/>
+                </View>
+                <TextInput style={[styles.textbla,styles.space]} paceholderTextColor='white' placeholder='Enter Username'
+                onChangeText={(username) => {
+                  this.setState({username})
+                }}/>
             </View>
+
+            </View>
+
             <View style={styles.sizer}>
-              <TextBoxLayout img = 'ios-person' text ='Enter Username'/>
+            <View style = {styles.textInput}>
+                <View style={[styles.ImgCon,styles.space]}>
+                  <IconIm name='ios-lock' color="#dae0ea" size={25} style={styles.img}/>
+                </View>
+                <TextInput style={[styles.textbla,styles.space]} paceholderTextColor='white' placeholder='Enter Password'
+                onChangeText={(password) => {
+                  this.setState({password})
+                }}/>
             </View>
+
+            </View>
+
+              <TouchableOpacity onPress ={()=>this._updateServer()}>
+                <Button text='signup'/>
+              </TouchableOpacity>
             <TouchableOpacity onPress={()=>this._navigateToProfile()}>
-              <Button text="SIGN UP"/>
+            <Text style ={{color:'white'}}>CLICK MEE</Text>
             </TouchableOpacity>
           </View>
 
@@ -97,6 +163,26 @@ const styles = StyleSheet.create({
   textInput:{
     flex:7,
     backgroundColor:'#353535'
+  },
+  textInput:{
+    flex:1,
+    flexDirection:'row',
+    backgroundColor:'#353535',
+    borderRadius:5,
+    overflow:'hidden'
+  },
+  space:{
+    justifyContent:'center',
+    alignItems:'center'
+  },
+  ImgCon:{
+    flex:2
+
+  },
+  textbla:{
+    flex:9,
+    color:'white'
+
   }
 })
 module.exports = SignUp

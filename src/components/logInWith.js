@@ -30,8 +30,9 @@ class LogInWith extends React.Component{
             <View style={styles.sizer}>
               <TextBoxLayout img = 'ios-lock' text ='Password'/>
             </View>
+            <Button text="LOG IN"/>
           </View>
-          <Button text="LOG IN"/>
+
 
         </View>
     )
@@ -50,7 +51,7 @@ const styles = StyleSheet.create({
     flexDirection:'column',
     alignItems:'center',
 
-    backgroundColor: 'black'
+    backgroundColor: '#181c26'
   },
   sizer:{width:300,height:50},
   bot:{
