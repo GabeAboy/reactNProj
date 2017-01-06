@@ -30,7 +30,7 @@ class BotNav extends React.Component{
         <StatusBarBackground/>
 
         <View style = {styles.upper}>
-            <Text style = {styles.titleText}>LinkedTogether</Text>
+            <Text style = {styles.titleText}>eHub</Text>
         </View>
         <View style = {styles.lowNav}>
 
