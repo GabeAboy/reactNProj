@@ -17,15 +17,25 @@ var db = app.get('db');
 
 
 app.post('/api/userLogin', function create_userLogin(req,res) {
-    console.log(req.body);
-     db.create_userLogin([req.body.email,req.body.username,
-       req.body.password],function(err,response) {
-       if(!err){
-         console.log('worked',response);
-         res.status(200).send(response);
-       }
-       else res.status(422).send(err);
-     })
+    console.log('post',req.body);
+    db.userlogininfo.save({email : req.body.email, username : req.body.username,password:req.body.password}, function(err,updated){
+      if(!err){
+        res.status(200).send('success');
+      }
+      else {
+        console.log(err);
+        res.status(422).send('Something went wrong');
+      }
+  //the updated record for the new user
+    });
+    //  db.create_user([req.body.email,req.body.username,
+    //    req.body.password],function(err,response) {
+    //    if(!err){
+    //      console.log('worked',response);
+    //      res.status(200).send(response);
+    //    }
+    //    else res.status(422).send(err);
+    //  })
 });
 
 
