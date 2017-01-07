@@ -26,22 +26,14 @@ _updateServer(){
     username: this.state.username,
     password:this.state.password
   }));
-  fetch('http://localhost:3000/endpoint/', {
-  method: 'POST',
-  headers: {
-    'Accept': 'application/json',
-    'Content-Type': 'application/json',
-  },
+  fetch('http://localhost:3000/api/userLogin', {'method': 'POST',
   body: JSON.stringify({
-    email: this.state.name,
+    email: this.state.username,
     username: this.state.username,
     password:this.state.password
   })
-}).then((response)=>response.json())
-  .then((responseJson)=>{
-    console.log(responseJson);
-    return responseJson
-  }) .catch((error) => { console.error(error); });
+}).then((response)=>{console.log('ghi');})
+   .catch((error) => { console.error(error); });
 }
   render(){
     return(
