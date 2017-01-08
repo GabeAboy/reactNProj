@@ -8,7 +8,7 @@ import TextBoxLayout from './loginComponents/textInput'
 class Profile extends React.Component{
 _navigateToNav(){
   this.props.navigator.push({
-    indent:'nav'
+    indent:'Nav'
   })
 }
 _updateServer(){
@@ -92,7 +92,7 @@ const styles = StyleSheet.create({
   },
   sizer:{width:120,height:50},
   staticUser:{
-    flex:1,alignItems:'center',backgroundColor:'red',
+    flex:1,alignItems:'center',backgroundColor:'#dae0ea',
     marginLeft:20,marginRight:20
   },
   header:{
@@ -104,7 +104,7 @@ const styles = StyleSheet.create({
   userInfo:{
     flex:7,
     flexDirection:'row',marginLeft:20,marginRight:20
-    ,backgroundColor:'red',marginBottom:20
+    ,backgroundColor:'#dae0ea',marginBottom:20
 
   },
   headerRight:{
@@ -126,7 +126,7 @@ const styles = StyleSheet.create({
     borderRadius:60,top:32,backgroundColor:'mistyrose'
       },
   spaceBet:{
-    flex:1,backgroundColor:'red',marginLeft:20,marginRight:20,
+    flex:1,backgroundColor:'#dae0ea',marginLeft:20,marginRight:20,
     borderTopLeftRadius:20,borderTopRightRadius:20
   },
   leftCol:{

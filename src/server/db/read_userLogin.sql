@@ -1,1 +1,1 @@
-select name,price,Imageurl from userlogininfo
+select * from userlogininfo

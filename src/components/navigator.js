@@ -1,4 +1,4 @@
-import MapView from 'react-native-maps';
+var MapView = require( 'react-native-maps')
 import React, { Component } from 'react';
 import {
   View,
@@ -12,8 +12,8 @@ const styles = StyleSheet.create({
     left: 0,
     right: 0,
     bottom: 0,
-    justifyContent: 'flex-end',
-    alignItems: 'center',
+
+
   },
   map: {
     position: 'absolute',
@@ -41,8 +41,7 @@ class Navigatord extends Component {
           latitudeDelta: 0.0922,
           longitudeDelta: 0.0421,
         }}
-      />
-      </View>
+      /></View>
     );
   }
 

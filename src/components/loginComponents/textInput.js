@@ -28,7 +28,8 @@ const styles = StyleSheet.create({
     flexDirection:'row',
     backgroundColor:'#353535',
     borderRadius:5,
-    overflow:'hidden'
+    overflow:'hidden',
+    marginBottom:10
   },
   space:{
     justifyContent:'center',

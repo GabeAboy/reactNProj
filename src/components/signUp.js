@@ -1,12 +1,12 @@
 'use strict'
 import React,{Component} from 'react'
-import {View,StyleSheet,Image,Text,TouchableOpacity,TextInput} from 'react-native'
+import {View,StyleSheet,Image,Text,TouchableOpacity,TextInput,Alert} from 'react-native'
 import StatusBarBackground from './StatusBarBackground'
 import TextBoxLayout from './loginComponents/textInput'
 import Button from './loginComponents/button'
 import IconIm from 'react-native-vector-icons/Ionicons'
 
-
+let wrong=[];
 class SignUp extends React.Component{
 constructor(props) {
   super(props);
@@ -20,24 +20,42 @@ _navigateToProfile(){
   })
 }
 _updateServer(){
-  console.log("HEY ",this.state.name)
-  console.log( JSON.stringify({
-    email: this.state.name,
-    username: this.state.username,
-    password:this.state.password
-  }));
-  fetch('http://localhost:3000/api/userLogin', {'method': 'POST',
-  body: JSON.stringify({
-    email: this.state.username,
-    username: this.state.username,
-    password:this.state.password
-  })
-}).then((response)=>{console.log('ghi');})
-   .catch((error) => { console.error(error); });
+  console.log('1');
+  var myHeaders = new Headers();
+  var myInit = { method: 'GET',
+           headers: myHeaders,
+           mode: 'cors',
+           cache: 'default' };
+      fetch('http://localhost:3000/api/readUserLogin', {myInit
+    })
+    .then(function(response) {
+      console.log('enter blob');
+        return response.blob();
+})
+.then(function(myBlob) {
+  console.log('blob overload',myBlob);
+
+
+})
+
+  //   fetch('http://localhost:3000/api/userLogin', {method: 'POST',
+  //   headers:{
+  //     'Accept': 'application/json',
+  //     'Content-Type':'application/json',
+  //   },
+  //   body: JSON.stringify({
+  //     email: this.state.name,
+  //     username: this.state.username,
+  //     password:this.state.password
+  //   })
+  // }).then((response)=>{console.log('reponse ',response);})
+  //    .catch((error) => { console.error(error); });
+
 }
+
+
   render(){
     return(
-
       <View style={styles.container}>
       <StatusBarBackground/>
           <View style={styles.top} >
@@ -110,10 +128,10 @@ const styles = StyleSheet.create({
     flex:2,
     justifyContent:'space-between',
     flexDirection:'column',
-    alignItems:'center',
+    alignItems:'center',marginBottom:10
 
   },
-  sizer:{width:300,height:50},
+  sizer:{width:300,height:50,marginBottom:10},
   bot:{
     flex:7,
     flexDirection:'column',

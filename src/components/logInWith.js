@@ -49,11 +49,11 @@ const styles = StyleSheet.create({
     flex:2,
     justifyContent:'space-between',
     flexDirection:'column',
-    alignItems:'center',
+    alignItems:'center',marginBottom:10,
 
     backgroundColor: '#181c26'
   },
-  sizer:{width:300,height:50},
+  sizer:{width:300,height:50,marginBottom:10},
   bot:{
     flex:7,
     flexDirection:'column',

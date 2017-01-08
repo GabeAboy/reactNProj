@@ -28,21 +28,16 @@ app.post('/api/userLogin', function create_userLogin(req,res) {
       }
   //the updated record for the new user
     });
-    //  db.create_user([req.body.email,req.body.username,
-    //    req.body.password],function(err,response) {
-    //    if(!err){
-    //      console.log('worked',response);
-    //      res.status(200).send(response);
-    //    }
-    //    else res.status(422).send(err);
-    //  })
+
 });
 
 
-app.get('/api/userLogin', function read_userLogin(req,res) {
+app.get('/api/readUserLogin', function read_userLogin(req,res) {
+    console.log('enter point');
     db.read_userLogin(function(err,userLoginInfo) {
-      if(!err){
-        res.status(200).json(userLoginInfo);
+      console.log('enter log',err,userLoginInfo);
+      if(true){
+        res.status(200).send(userLoginInfo);
       }
       else {
         res.status(422).json(err);
