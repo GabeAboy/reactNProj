@@ -36,7 +36,7 @@ _updateServer(){
   console.log('blob overload',myBlob);
 
 
-})
+}).catch((error)=>{console.log(error);})
 
   //   fetch('http://localhost:3000/api/userLogin', {method: 'POST',
   //   headers:{
@@ -96,7 +96,7 @@ _updateServer(){
                 <View style={[styles.ImgCon,styles.space]}>
                   <IconIm name='ios-lock' color="#dae0ea" size={25} style={styles.img}/>
                 </View>
-                <TextInput style={[styles.textbla,styles.space]} paceholderTextColor='white' placeholder='Enter Password'
+                <TextInput style={[styles.textbla,styles.space]} paceholderTextColor='white' placeholder='Enter Password' secureTextEntry={true}
                 onChangeText={(password) => {
                   this.setState({password})
                 }}/>
