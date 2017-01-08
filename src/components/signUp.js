@@ -23,60 +23,74 @@ _updateServer(email,user,pass){
   var isValid = false;
   var isValidUser = false;
   var isValidPass = false;
-
+  var inValids = []
     function validateEmail(email) {
       var re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
         return re.test(email);
     }
     isValid = validateEmail(email);
-    function validateLength(user){
+    function validateUser(user){
       if(user){
+        if(user.length>4&&user.indexOf(' ')>0)return true
+        else{
+          console.log('hi');
+        }
+      }
+    }
+    isValidUser = validateUser(user);
+    function validatePass(pass){
+      if(pass){
         if(user.length>4)return true
       }
     }
-    isValidLength = validateLength(user,pass);
-
-
-
-console.log('1',isValidLength,'2',isValid);
+    isValidPass = validatePass(pass)
 
 
 
 
 
+if(isValid,isValidUser,isValidPass){
+
+      fetch('http://localhost:3000/api/userLogin', {method: 'POST',
+      headers:{
+        'Accept': 'application/json',
+        'Content-Type':'application/json',
+      },
+      body: JSON.stringify({
+        email: this.state.name,
+        username: this.state.username,
+        password:this.state.password
+      })
+    }).then((response)=>{console.log('reponse ',response);})
+      .then(()=>this._navigateToProfile())
+       .catch((error) => { console.error(error); });
+
+}
+else{
+  Alert.alert('Error','Bad inputs')
+  }
+}
+_logServer(){
 
 
-  console.log('1');
-  var myHeaders = new Headers();
-  var myInit = { method: 'GET',
-           headers: myHeaders,
-           mode: 'cors',
-           cache: 'default' };
-      fetch('http://localhost:3000/api/readUserLogin', {myInit
-    })
-    .then(function(response) {
-      console.log('enter blob');
-        return response.blob();
-})
-.then(function(myBlob) {
-  console.log('blob overload',myBlob);
+
+    console.log('1');
+    var myHeaders = new Headers();
+    var myInit = { method: 'GET',
+             headers: myHeaders,
+             mode: 'cors',
+             cache: 'default' };
+        fetch('http://localhost:3000/api/readUserLogin', {myInit
+      })
+      .then(function(response) {
+        console.log('enter blob');
+          return response.blob();
+  })
+  .then(function(myBlob) {
+    console.log('blob overload',myBlob);
 
 
-}).catch((error)=>{console.log(error);})
-
-  //   fetch('http://localhost:3000/api/userLogin', {method: 'POST',
-  //   headers:{
-  //     'Accept': 'application/json',
-  //     'Content-Type':'application/json',
-  //   },
-  //   body: JSON.stringify({
-  //     email: this.state.name,
-  //     username: this.state.username,
-  //     password:this.state.password
-  //   })
-  // }).then((response)=>{console.log('reponse ',response);})
-  //    .catch((error) => { console.error(error); });
-
+  }).catch((error)=>{console.log(error);})
 }
 
 
@@ -133,8 +147,8 @@ console.log('1',isValidLength,'2',isValid);
               <TouchableOpacity onPress ={()=>this._updateServer(this.state.name,this.state.username,this.state.password)}>
                 <Button text='signup'/>
               </TouchableOpacity>
-            <TouchableOpacity onPress={()=>this._navigateToProfile()}>
-            <Text style ={{color:'white'}}>CLICK MEE</Text>
+            <TouchableOpacity onPress={()=>this._logServer()}>
+            <Text style ={{color:'white',width:100,height:20,backgroundColor:'blue'}}>CLICK MEE</Text>
             </TouchableOpacity>
           </View>
 
@@ -196,10 +210,7 @@ const styles = StyleSheet.create({
     backgroundColor:'blue',
     width:200
   },
-  textInput:{
-    flex:7,
-    backgroundColor:'#353535'
-  },
+
   textInput:{
     flex:1,
     flexDirection:'row',

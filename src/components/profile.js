@@ -40,7 +40,7 @@ _updateServer(){
     <View style={styles.spaceBet}>
     </View>
     <View style={styles.staticUser}>
-        <Text>NAME</Text>
+        <TextInput placeholder="Name here"></TextInput>
         <Text>Software Engineer</Text>
     </View>
 

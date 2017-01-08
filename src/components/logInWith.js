@@ -1,40 +1,96 @@
 'use strict'
 import React,{Component} from 'react'
-import {View,StyleSheet,Image,Text,TextInput,TouchableOpacity} from 'react-native'
-import Icon from 'react-native-vector-icons/FontAwesome'
-import IconIm from 'react-native-vector-icons/Ionicons'
+import {View,StyleSheet,Image,Text,TouchableOpacity,TextInput,Alert} from 'react-native'
 import StatusBarBackground from './StatusBarBackground'
 import TextBoxLayout from './loginComponents/textInput'
 import Button from './loginComponents/button'
-class LogInWith extends React.Component{
-  _navigateToProfile(){
-    this.props.navigator.push({
-      indent:'Profile'
+import IconIm from 'react-native-vector-icons/Ionicons'
+
+let wrong=[];
+class SignUp extends React.Component{
+constructor(props) {
+  super(props);
+  this.state = {name: '',
+                password:'',
+              };
+}
+_navigateToProfile(){
+  this.props.navigator.push({
+    indent:'Profile'
+  })
+}
+_logIn(){
+
+
+        fetch('http://localhost:3000/api/userLoginCheck', {method: 'POST',
+        headers:{
+          'Accept': 'application/json',
+          'Content-Type':'application/json',
+        },
+        body: JSON.stringify({
+          email: this.state.name,
+          password:this.state.password
+        })
+      }).then((response)=>{if(response.status===404){
+
+        Alert.alert('No','NOO')
+      }else{
+        this._navigateToProfile()
+      }
     })
-  }
+
+  .catch((error) => { console.error(error); });
+
+}
+
   render(){
     return(
-
       <View style={styles.container}>
       <StatusBarBackground/>
           <View style={styles.top} >
-              <Text style={[styles.login,styles.lineHeight]}>Log in</Text>
-              <TouchableOpacity style={styles.button}><Text style={styles.login}>LOG IN WITH FACEBOOK</Text></TouchableOpacity>
+              <Text style={[styles.login,styles.lineHeight]}>Sign in</Text>
+              <TouchableOpacity style={styles.button}><Text style={styles.login}>SIGN IN WITH FACEBOOK</Text></TouchableOpacity>
               <Text style={styles.login}>or</Text>
           </View>
 
           <View style={[styles.bot]}>
+
             <View style={styles.sizer}>
-              <TextBoxLayout img = 'ios-person' text ='Username or email'/>
+              <View style = {styles.textInput}>
+                  <View style={[styles.ImgCon,styles.space]}>
+                    <IconIm name='ios-mail' color="#dae0ea" size={25} style={styles.img}/>
+                  </View>
+                  <TextInput style={[styles.textbla,styles.space]}  placeholderTextColor='#8e949e' placeholder='Enter Email or Username'
+                  onChangeText={(name) => {
+                    this.setState({name})
+                  }}/>
+              </View>
             </View>
+
+
             <View style={styles.sizer}>
-              <TextBoxLayout img = 'ios-lock' text ='Password'/>
+            <View style = {styles.textInput}>
+                <View style={[styles.ImgCon,styles.space]}>
+                  <IconIm name='ios-lock' color="#dae0ea" size={25} style={styles.img}/>
+                </View>
+                <TextInput style={[styles.textbla,styles.space]} placeholderTextColor='#8e949e' placeholder='Enter Password' secureTextEntry={true}
+                onChangeText={(password) => {
+                  this.setState({password})
+                }}/>
             </View>
-            <Button text="LOG IN"/>
+
+            </View>
+
+              <TouchableOpacity onPress ={()=>this._logIn(this.state.name,this.state.password)}>
+                <Button text='signup'/>
+              </TouchableOpacity>
+            <TouchableOpacity onPress={()=>this._logServer()}>
+            <Text style ={{color:'white',width:100,height:20,backgroundColor:'blue'}}>CLICK MEE</Text>
+            </TouchableOpacity>
           </View>
 
-
         </View>
+
     )
   }
 }
@@ -43,21 +99,21 @@ const styles = StyleSheet.create({
   container:{
     flex:1,
     alignItems:'center',
-    backgroundColor:'#181c26'
+    backgroundColor: '#181c26'
   },
   top:{
     flex:2,
     justifyContent:'space-between',
     flexDirection:'column',
-    alignItems:'center',marginBottom:10,
+    alignItems:'center',marginBottom:10
 
-    backgroundColor: '#181c26'
   },
   sizer:{width:300,height:50,marginBottom:10},
   bot:{
     flex:7,
     flexDirection:'column',
     alignItems:'center'
+
 
   },
   lineHeight:{
@@ -91,9 +147,26 @@ const styles = StyleSheet.create({
     backgroundColor:'blue',
     width:200
   },
+
   textInput:{
-    flex:7,
-    backgroundColor:'gray'
+    flex:1,
+    flexDirection:'row',
+    backgroundColor:'#353535',
+    borderRadius:5,
+    overflow:'hidden'
+  },
+  space:{
+    justifyContent:'center',
+    alignItems:'center'
+  },
+  ImgCon:{
+    flex:2
+
+  },
+  textbla:{
+    flex:9,
+    color:'white'
+
   }
 })
-module.exports = LogInWith
+module.exports = SignUp

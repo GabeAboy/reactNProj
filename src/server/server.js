@@ -32,6 +32,29 @@ app.post('/api/userLogin', function create_userLogin(req,res) {
 });
 
 
+
+app.post('/api/userLoginCheck', function create_userLogin(req,res) {
+    console.log('post',req.body);
+    db.userlogininfo.where("email=$1 AND password=$2", [req.body.email, req.body.password], function(err, userInfo){
+  //products 10 and 21
+
+  if(!err){
+    console.log('user',userInfo);
+    if(userInfo.length<=0) {
+console.log('user2',userInfo);
+      return res.status(404).send('User not found');
+    }
+    return res.status(200).send('success');
+  }
+  else {
+    console.log(err);
+    res.status(422).send('Something went wrong');
+  }
+  });
+
+
+});
+
 app.get('/api/readUserLogin', function read_userLogin(req,res) {
     console.log('enter point');
     db.read_userLogin(function(err,userLoginInfo) {
