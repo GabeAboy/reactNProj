@@ -19,7 +19,33 @@ _navigateToProfile(){
     indent:'Profile'
   })
 }
-_updateServer(){
+_updateServer(email,user,pass){
+  var isValid = false;
+  var isValidUser = false;
+  var isValidPass = false;
+
+    function validateEmail(email) {
+      var re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+        return re.test(email);
+    }
+    isValid = validateEmail(email);
+    function validateLength(user){
+      if(user){
+        if(user.length>4)return true
+      }
+    }
+    isValidLength = validateLength(user,pass);
+
+
+
+console.log('1',isValidLength,'2',isValid);
+
+
+
+
+
+
+
   console.log('1');
   var myHeaders = new Headers();
   var myInit = { method: 'GET',
@@ -71,7 +97,7 @@ _updateServer(){
                   <View style={[styles.ImgCon,styles.space]}>
                     <IconIm name='ios-mail' color="#dae0ea" size={25} style={styles.img}/>
                   </View>
-                  <TextInput style={[styles.textbla,styles.space]} paceholderTextColor='white' placeholder='Enter Email'
+                  <TextInput style={[styles.textbla,styles.space]}  placeholderTextColor='#8e949e' placeholder='Enter Email'
                   onChangeText={(name) => {
                     this.setState({name})
                   }}/>
@@ -83,7 +109,7 @@ _updateServer(){
                 <View style={[styles.ImgCon,styles.space]}>
                   <IconIm name='ios-person' color="#dae0ea" size={25} style={styles.img}/>
                 </View>
-                <TextInput style={[styles.textbla,styles.space]} paceholderTextColor='white' placeholder='Enter Username'
+                <TextInput style={[styles.textbla,styles.space]} placeholderTextColor='#8e949e' placeholder='Enter Username'
                 onChangeText={(username) => {
                   this.setState({username})
                 }}/>
@@ -96,7 +122,7 @@ _updateServer(){
                 <View style={[styles.ImgCon,styles.space]}>
                   <IconIm name='ios-lock' color="#dae0ea" size={25} style={styles.img}/>
                 </View>
-                <TextInput style={[styles.textbla,styles.space]} paceholderTextColor='white' placeholder='Enter Password' secureTextEntry={true}
+                <TextInput style={[styles.textbla,styles.space]} placeholderTextColor='#8e949e' placeholder='Enter Password' secureTextEntry={true}
                 onChangeText={(password) => {
                   this.setState({password})
                 }}/>
@@ -104,7 +130,7 @@ _updateServer(){
 
             </View>
 
-              <TouchableOpacity onPress ={()=>this._updateServer()}>
+              <TouchableOpacity onPress ={()=>this._updateServer(this.state.name,this.state.username,this.state.password)}>
                 <Button text='signup'/>
               </TouchableOpacity>
             <TouchableOpacity onPress={()=>this._navigateToProfile()}>
