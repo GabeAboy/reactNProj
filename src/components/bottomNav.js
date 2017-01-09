@@ -23,6 +23,11 @@ class BotNav extends React.Component{
       indent:'SignUp'
     })
   }
+  _toNav(){
+    this.props.navigator.push({
+      indent:'Nav'
+    })
+  }
   render() {
 
     return (
@@ -30,7 +35,7 @@ class BotNav extends React.Component{
         <StatusBarBackground/>
 
         <View style = {styles.upper}>
-            <Text style = {styles.titleText}>eHub</Text>
+            <TouchableOpacity style = {styles.titleText}onPress={()=>this._toNav()}><Text>eHub</Text></TouchableOpacity>
         </View>
         <View style = {styles.lowNav}>
 
