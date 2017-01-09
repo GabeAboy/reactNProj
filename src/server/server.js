@@ -55,6 +55,32 @@ console.log('user2',userInfo);
 
 });
 
+
+
+
+
+app.post('/api/userProfile', function(req,res) {
+    console.log('post',req.body, db);
+    db.userProfile.save({
+                  name:req.body.name,
+                  work:req.body.work,
+                  occupation:req.body.occupation,
+                  skills:req.body.skills
+                }, function(err,updated){
+      if(!err){
+        res.status(200).send('success');
+      }
+      else {
+        console.log(err);
+        res.status(422).send('Something went wrong');
+      }
+  //the updated record for the new user
+    });
+
+});
+
+
+
 app.get('/api/readUserLogin', function read_userLogin(req,res) {
     console.log('enter point');
     db.read_userLogin(function(err,userLoginInfo) {

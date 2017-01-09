@@ -16,7 +16,7 @@ constructor(props) {
 }
 _navigateToProfile(){
   this.props.navigator.push({
-    indent:'Profile'
+    indent:'Edit'
   })
 }
 _logIn(){

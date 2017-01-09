@@ -16,6 +16,7 @@ import BotNav from './src/components/bottomNav'
 import LogInWith from './src/components/logInWith'
 import SignUp from './src/components/signUp'
 import Profile from './src/components/profile'
+import EditPro from './src/components/editProfile'
 import Navigatord from './src/components/navigator'
 const fbIcon = require('./src/pics/logo/facebook.png')
 var SQLite = require('react-native-sqlite-storage')
@@ -50,6 +51,11 @@ class theMarket extends Component {
                 <Navigatord
                   {...globalNavigatorProps}/>
               )
+              case 'Edit':
+                return(
+                  <EditPro
+                    {...globalNavigatorProps}/>
+                )
       }
     }
 

@@ -130,11 +130,11 @@ const styles = StyleSheet.create({
     borderTopLeftRadius:20,borderTopRightRadius:20
   },
   leftCol:{
-    flex:5,justifyContent:'space-between',alignItems:'center'
+    flex:5,alignItems:'center'
 
   },
   rightCol:{
-    flex:5,justifyContent:'space-between',alignItems:'center'
+    flex:5,alignItems:'center'
 
   }
 })
