@@ -9,7 +9,7 @@ import {
   TouchableOpacity,
   Navigator,
   TextInput} from 'react-native'
-import StatusBarBackground from './StatusBarBackground';
+import StatusBarBackground from './ReUsables/StatusBarBackground';
 const backDrop = require('../pics/background.jpg')
 
 class BotNav extends React.Component{

@@ -12,12 +12,12 @@ import {
 } from 'react-native';
 
 
-import BotNav from './src/components/bottomNav'
-import LogInWith from './src/components/logInWith'
-import SignUp from './src/components/signUp'
-import Profile from './src/components/profile'
-import EditPro from './src/components/editProfile'
-import Navigatord from './src/components/navigator'
+import LandingPage from './src/components/LandingPage'
+import LogInWith from './src/components/OAuthComponents/logInWith'
+import SignUp from './src/components/OAuthComponents/signUp'
+import Profile from './src/components/OAuthComponents/ProfileComp/profile'
+import EditPro from './src/components/OAuthComponents/ProfileComp/editProfile'
+import Navigatord from './src/components/OAuthComponents/ProfileComp/navigator'
 const fbIcon = require('./src/pics/logo/facebook.png')
 var SQLite = require('react-native-sqlite-storage')
 
@@ -26,9 +26,9 @@ class theMarket extends Component {
   _renderScene(route,navigator){
       var globalNavigatorProps = {navigator}
       switch(route.indent){
-        case 'logIn':
+        case 'LandingPage':
           return(
-            <BotNav
+            <LandingPage
               {...globalNavigatorProps}/>
           )
         case 'logInWith':
@@ -63,7 +63,7 @@ class theMarket extends Component {
   render() {
     return (
       <Navigator
-        initialRoute={{indent:"logIn"}}
+        initialRoute={{indent:"LandingPage"}}
         ref='appNavigator'
         style = {styles.navStyle}
         renderScene = {this._renderScene} />

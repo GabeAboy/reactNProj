@@ -1,9 +1,9 @@
 'use strict'
 import React,{Component} from 'react'
 import {View,StyleSheet,Image,Text,TouchableOpacity,TextInput,Alert} from 'react-native'
-import StatusBarBackground from './StatusBarBackground'
-import TextBoxLayout from './loginComponents/textInput'
-import Button from './loginComponents/button'
+import StatusBarBackground from '../ReUsables/StatusBarBackground'
+import TextBoxLayout from '../ReUsables/textInput'
+import Button from '../ReUsables/button'
 import IconIm from 'react-native-vector-icons/Ionicons'
 
 let wrong=[];
@@ -84,9 +84,7 @@ _logIn(){
               <TouchableOpacity onPress ={()=>this._logIn(this.state.name,this.state.password)}>
                 <Button text='signup'/>
               </TouchableOpacity>
-            <TouchableOpacity onPress={()=>this._logServer()}>
-            <Text style ={{color:'white',width:100,height:20,backgroundColor:'blue'}}>CLICK MEE</Text>
-            </TouchableOpacity>
+
           </View>
 
         </View>

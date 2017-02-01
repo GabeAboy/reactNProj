@@ -1,7 +1,8 @@
 'use strict'
 import React,{Component} from 'react'
 import {View,StyleSheet,Image,Text,TouchableOpacity,TextInput} from 'react-native'
-import StatusBarBackground from './StatusBarBackground'
+import StatusBarBackground from '../../ReUsables/StatusBarBackground'
+import Button from '../../ReUsables/button'
 
 class EditPro extends React.Component{
   constructor(props) {
@@ -73,7 +74,9 @@ _updateServer(){
     this.setState({skills});
   }}/>
 
-  <TouchableOpacity onPress = {()=>this._updateServer()} style = {styles.button}><Text>Submit</Text></TouchableOpacity>
+  <TouchableOpacity style={styles.button}onPress ={()=>this._updateServer()}>
+    <Button text='signup'/>
+  </TouchableOpacity>
 
   </View>
     )
@@ -83,18 +86,29 @@ const styles = StyleSheet.create({
 
   container:{
     flex:1,
+    alignItems:'center',
     backgroundColor:'#181c26'
   },
-  textInput:{flex:1,
-    backgroundColor:'gray'
+  textInput:{width:300,height:50,
+
+
+    backgroundColor:'#353535',
+    borderRadius:5,
+    overflow:'hidden'
   },
   queryText:{
-    backgroundColor:'white'
+    color:'white',
+    fontWeight:'bold',
+    fontSize:20,
+    paddingTop:20
   },
   button:{
-    flex:1,backgroundColor:'red'
+    paddingTop:20
   }
+  ,text:{
+    fontSize:40,color:'white'
 
+  }
 
 });
 module.exports = EditPro

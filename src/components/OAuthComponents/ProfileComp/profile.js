@@ -1,10 +1,10 @@
 'use strict'
 import React,{Component} from 'react'
 import {View,StyleSheet,Image,Text,TouchableOpacity,TextInput} from 'react-native'
-import StatusBarBackground from './StatusBarBackground'
+import StatusBarBackground from '../../ReUsables/StatusBarBackground'
 import IconIm from 'react-native-vector-icons/Ionicons'
-import SkillBox from './loginComponents/addSkill'
-import TextBoxLayout from './loginComponents/textInput'
+import SkillBox from '../../ReUsables/addSkill'
+import TextBoxLayout from '../../ReUsables/textInput'
 class Profile extends React.Component{
 _navigateToNav(){
   this.props.navigator.push({
@@ -40,7 +40,7 @@ _updateServer(){
     <View style={styles.spaceBet}>
     </View>
     <View style={styles.staticUser}>
-        <TextInput placeholder="Name here"></TextInput>
+        <Text>Name</Text>
         <Text>Software Engineer</Text>
     </View>
 
