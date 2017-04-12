@@ -30,9 +30,9 @@ var db = app.get('db');
 //     });
 //
 // });
-
-
-
+//
+//
+//
 // app.post('/api/userLoginCheck', function create_userLogin(req,res) {
 //     console.log('post',req.body);
 //     db.userlogininfo.where("email=$1 AND password=$2", [req.body.email, req.body.password], function(err, userInfo){
@@ -57,8 +57,8 @@ var db = app.get('db');
 //
 //
 //
-
-
+//
+//
 // app.post('/api/userProfile', function(req,res) {
 //     // console.log('post',req.body, db);
 //     //db.save_profile([], function(err, response) {});
