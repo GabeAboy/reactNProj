@@ -3,19 +3,21 @@ var bodyParser = require('body-parser');
 var massive = require('massive');
 var cors = require('cors');
 
+var accountController = require('./node_controllers/accountController.js')
+
 var port = 1080;
 var conn = massive.connectSync({
   connectionString : "postgres://postgres:@localhost/hub"
 });
 var app = module.exports = express();
-
 app.use(bodyParser.json());
 app.use(cors());
 app.set('db', conn);
 var db = app.get('db');
 
+app.post('/api/createUserAccount', accountController.createUserAccount);
 
-//
+
 // app.post('/api/userLogin', function create_userLogin(req,res) {
 //     console.log('post',req.body);
 //     db.userlogininfo.save({email : req.body.email, username : req.body.username,password:req.body.password}, function(err,updated){
@@ -30,7 +32,7 @@ var db = app.get('db');
 //     });
 //
 // });
-//
+
 //
 //
 // app.post('/api/userLoginCheck', function create_userLogin(req,res) {
