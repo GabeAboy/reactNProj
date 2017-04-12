@@ -10,9 +10,10 @@ let wrong=[];
 class SignUp extends React.Component{
 constructor(props) {
   super(props);
-  this.state = {name: '',
-                password:'',
-                username:''};
+  this.state = {first: '',
+                last:'',
+                email:'',
+                password:''};
 }
 _navigateToProfile(){
   this.props.navigator.push({
@@ -51,14 +52,15 @@ _updateServer(email,user,pass){
 
 if(isValid,isValidUser,isValidPass){
 
-      fetch('http://localhost:3000/api/userLogin', {method: 'POST',
+      fetch('http://localhost:1080/api/createUserAccount', {method: 'POST',
       headers:{
         'Accept': 'application/json',
         'Content-Type':'application/json',
       },
       body: JSON.stringify({
-        email: this.state.name,
-        username: this.state.username,
+        first: this.state.first,
+        last: this.state.last,
+        email:this.state.email,
         password:this.state.password
       })
     }).then((response)=>{console.log('reponse ',response);})
