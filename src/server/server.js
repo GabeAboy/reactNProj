@@ -10,12 +10,25 @@ var conn = massive.connectSync({
   connectionString : "postgres://postgres:@localhost/hub"
 });
 var app = module.exports = express();
+// module.exports ={
+//   mod:app
+// }
 app.use(bodyParser.json());
 app.use(cors());
 app.set('db', conn);
 var db = app.get('db');
 
-app.post('/api/createUserAccount', accountController.createUserAccount);
+app.post('/api/createUserAccount',function(req,res) {
+  console.log('hi',req.body);
+  var accountInfo = {
+    first:req.body.first,
+    last:req.body.last,
+    email:req.body.email,
+    password:req.body.password
+  }
+  console.log(accountInfo);
+  res.status(200).send(req.body)
+});
 
 
 // app.post('/api/userLogin', function create_userLogin(req,res) {
