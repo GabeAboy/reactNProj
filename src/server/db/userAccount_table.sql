@@ -1,11 +1,12 @@
 CREATE TABLE accountInfo(
   ID SERIAL PRIMARY KEY,
-  LastName varchar(225) NOT NULL,
   FirstName varchar(225) NOT NULL,
-  EmailAddres varchar(225) NOT NULL
+  LastName varchar(225) NOT NULL,
+  EmailAddres varchar(225) NOT NULL,
+  Password varchar(225) NOT NULL
 )
 
---REFERENCES 
+--REFERENCES
 -- CREATE TABLE public.customers
 -- (
 -- 	id integer NOT NULL DEFAULT nextval('customers_pk'),
@@ -15,3 +16,13 @@ CREATE TABLE accountInfo(
 -- 	PRIMARY KEY (id),
 -- 	FOREIGN KEY (account_id) REFERENCES public.accounts (id)
 -- );
+
+
+-- INSERT INTO accountInfo(FirstName,LastName,EmailAddres,Password)
+-- VALUES('john','wick','jw@gmail','abc123')
+-- {
+--   "FirstName":"John",
+--   "LastName":"Wick",
+--   "EmailAddres":"asd@aol.com",
+--   "Password":"asd123"
+-- }
