@@ -34,6 +34,7 @@ app.post('/api/createUserAccount',function(req,res) {
   })
 });
 app.post('/api/AccountLogin',function(req,res) {
+  console.log('hit');
   db.accountLogin([req.body.EmailAddres,req.body.Password],function (err,response) {
     console.log(response,err);
     res.status(200).send('good')
